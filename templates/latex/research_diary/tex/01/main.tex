@@ -1,0 +1,90 @@
+\documentclass[11pt]{../report}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+    \geometry{a4paper, margin=1in}
+\usepackage{caption}
+    \captionsetup[table]{font=small, skip=5pt, justification=centering}
+\usepackage{fontspec}
+    % \setmainfont{Nunito}
+\usepackage{placeins}
+\usepackage{setspace}
+\usepackage{emoji}
+\usepackage{graphicx}
+    \graphicspath{{tex/images}}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lipsum} % for filler text
+% \usepackage{codespace}
+
+\setstretch{1.7}
+
+\title{\docTitle}
+\author{\docAuthor}
+\date{\docDate}
+% Override some property from report.cls
+\ocoverType{Reseach Diary}
+\oreportPlace{Ho Chi Minh city}
+\ocoverHeader{Cover Header}
+\ocoverImage{../images/logo.png}
+\ocoverAuthor{\docAuthor}
+\oreportTime{\docDate}
+
+\newenvironment{code}[2][]{
+    \VerbatimEnvironment%
+    \edef\xmdframed{\noexpand\begin{mdframed}[\@codeframe]}\xmdframed%
+    \edef\xminted{\noexpand\begin{minted}[\@codestyle,#1]{#2}}\xminted%
+    \captionof{listing}{#1}\label{#1} % Add caption and label
+}{
+    \end{minted}
+    \end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Notes on use of hyperlinks:
+%% \url{http://www.wikibooks.org}
+%% \href{http://www.wikibooks.org}{wikibooks home}
+%% \href{mailto:email@site.com}{email@site.com}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\docTitle}{Docs title}
+\newcommand{\docAuthor}{Ha Tuong Nguyen}
+\newcommand{\docDate}{yyyy-mm-dd}
+\newcommand{\workingDate}{\textsc{\docDate}}
+\newcommand{\userName}{\docAuthor}
+\newcommand{\institution}{HCMUT}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle    ={\docTitle},
+    pdfauthor   ={\docAuthor},
+    pdfsubject  ={}, % Description
+    pdfkeywords ={}, % Keywords
+    pdfcreator  ={\docAuthor},
+}
+
+\pagestyle{fancy}
+\setlength\parindent{0in}
+\setlength\parskip{0.1in}
+\setlength\headheight{15pt}
+
+%%%%%%%%%%% HEADER / FOOTER %%%%%%%%%%%
+\rhead{\workingDate}
+\chead{\textsc{Research Diary}}
+\lhead{\textsc{\userName}}
+\rfoot{\textsc{\thepage}}
+\cfoot{\textit{Last modified: \today}}
+\lfoot{\textsc{\institution}}
+                         
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \coverpage
+    Default template.
+    
+    \newpage
+
+    \include{abstaction}
+    \include{conclusion}
+    
+\end{document}
