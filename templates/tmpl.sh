@@ -7,12 +7,16 @@ tmpl() {
 
 	CMD="tmpl"
 
-	HELP_MESSAGE="$CMD <lang> <template_name>
-	Option:
-		-h --h --help           : Print help
-		--lang                  : List all supported language
-        -d <str>                : Set the destination directory (default cwd=`$PWD`)
-	"
+	HELP_MESSAGE="\`tmpl\`, created by Ha Tuong Nguyen a.k.a nguyenpanda in 2025, is a command-line application that clones a \`template\` for a specific programming language.
+    
+Command format: \`$CMD <lang> <template_name>\`
+Option:
+    -h --h --help           : Print help
+    --lang                  : List all supported language
+    -d <str>                : Set the destination directory (default cwd=`$PWD`)
+Note:
+    To visit all available templates of a specific programming language, use this command (\`$CMD <lang> --list\`)
+"
 
 	dest_dir="$PWD"
 
@@ -22,7 +26,7 @@ tmpl() {
             -h|--h|--help)
                 echo -e "$HELP_MESSAGE"
                 return 0;;
-            --opt)
+            --lang)
                 echo -e "Supported Languages:"
                 find "$PANDA_TMPL_DIR" -type d -maxdepth 1 -mindepth 1 | sort | awk -F/ '{print "\t- \033[1;92m" $NF "\033[0m"}'
                 return 0;;
@@ -32,7 +36,7 @@ tmpl() {
     if [[ $# -lt 2 ]]; then
         echo -e "${YELLOW}Error: Missing required arguments.${RESET}\n"
         echo -e "$HELP_MESSAGE"
-        return 1
+        return 0
     fi
 
     lang="$1"
@@ -64,6 +68,11 @@ tmpl() {
     # Check if template exists
     tmpl_path="${lang_dir}/${template_name}"
     if [[ ! -d "$tmpl_path" ]]; then
+        if [[ "${template_name}" == "--list" ]]; then
+            echo -e "${GREEN}All \`${lang}\` templates.${RESET}"
+            ls "${lang_dir}"
+            return 0
+        fi
         echo -e "${YELLOW}Error: Template '$template_name' does not exist in '${lang_dir}'.${RESET}"
         return 1
     fi
