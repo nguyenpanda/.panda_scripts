@@ -1,5 +1,7 @@
 #include "header.h"
 
+nguyenpanda::swan::FourBitColor color;
+
 int main(int argc, char* argv[]) {
 	hello();
 	a();
