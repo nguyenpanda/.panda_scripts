@@ -1,0 +1,6 @@
+setuptools
+
+nguyenpanda
+
+pytest
+pytest-html
