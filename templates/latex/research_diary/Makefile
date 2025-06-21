@@ -9,7 +9,7 @@ CLEAN_FILES = $(addprefix $(OUTDIR)/*, .aux .fdb_latexmk .fls .log .out .synctex
 AUTO_CLEAR = 1
 IS_VERBOSE = 1
 
-ifeq ($(IS_VERBOSE), 1)
+ifeq ($(IS_VERBOSE), 0)
 	VERBOSE = @
 endif
 
@@ -33,7 +33,7 @@ endif
 .PHONY: all help latex clean clear
 
 help:	### Display help message
-	$(VERBOSE)awk -F ':.*###' '$$0 ~ FS {printf "$(GREEN)%15s$(RESET)%s\n", $$1 ":", $$2}' \
+	@awk -F ':.*###' '$$0 ~ FS {printf "$(GREEN)%15s$(RESET)%s\n", $$1 ":", $$2}' \
 		$(MAKEFILE_LIST) | grep -v '@awk' | sort
 
 latex:	### Compile into PDF file `make latex FILE=<filename> OUTDIR=<output_path>` (default FILE=main, OUTDIR=./output)
