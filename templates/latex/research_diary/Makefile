@@ -21,11 +21,11 @@ RESET = \033[0m
 
 # Pre-check
 ifeq ($(FILE),)
-	$(error FILE variable is not set. Use 'make latex FILE=<filename> OUTDIR=<output_path>')
+$(error FILE variable is not set. Use 'make latex OUTDIR=<output_path> FILE=<filename: default = main>')
 endif
 
 ifeq ($(INDIR),)
-	$(error INDIR variable is not set. Use 'make latex FILE=<filename> OUTDIR=<output_path>')
+$(error INDIR variable is not set. Use 'make latex OUTDIR=<output_path> FILE=<filename: default = main>')
 endif
 
 # MAIN
