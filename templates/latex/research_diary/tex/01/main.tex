@@ -1,27 +1,8 @@
-\documentclass[11pt]{../report}
-\usepackage{amsmath}
-\usepackage{geometry}
-    \geometry{a4paper, margin=1in}
-\usepackage{caption}
-    \captionsetup[table]{font=small, skip=5pt, justification=centering}
-\usepackage{fontspec}
-    % \setmainfont{Nunito}
-\usepackage{placeins}
-\usepackage{setspace}
-\usepackage{emoji}
-\usepackage{graphicx}
-    \graphicspath{ {../images/} }
-\usepackage{tikz}
-\usepackage{fancyhdr}
-    \pagestyle{fancy}
-    \setlength\parindent{0in}
-    \setlength\parskip{0.1in}
-    \setlength\headheight{15pt}
-\usepackage{lipsum}
+\documentclass[11pt]{tex/report}
 
-\newtheorem{theorem}{Theorem}
+\graphicspath{ {tex/images/} }
 
-\setstretch{1.7}
+\addbibresource{refs/refs.bib}
 
 \title{\docTitle}
 \author{\docAuthor}
@@ -34,10 +15,9 @@
 %% \href{mailto:email@site.com}{email@site.com}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\newcommand{\docTitle}{Docs title}
+\newcommand{\docTitle}{ANSI Escape Code}
 \newcommand{\docAuthor}{Ha Tuong Nguyen}
-\newcommand{\docDate}{yyyy-mm-dd}
+\newcommand{\docDate}{2025-06-22}
 \newcommand{\workingDate}{\textsc{\docDate}}
 \newcommand{\userName}{\docAuthor}
 \newcommand{\institution}{HCMUT}
@@ -54,14 +34,14 @@
 \hypersetup{
     pdftitle    ={\docTitle},
     pdfauthor   ={\docAuthor},
-    pdfsubject  ={}, % Description
-    pdfkeywords ={}, % Keywords
+    pdfsubject  ={Introduces some basic knowledge about rendering color and controlling cursor on terminal using ansi escape code}, % Description
+    pdfkeywords ={ansi, ansi escape code, terminal, computer, computer graphic, reseach diary}, % Keywords
     pdfcreator  ={\docAuthor},
 }
 
 %%%%%%%%%%% HEADER / FOOTER %%%%%%%%%%%
 \rhead{\workingDate}
-\chead{\textsc{Research Diary}}
+\chead{\textsc{Tutorial}}
 \lhead{\textsc{\userName}}
 \rfoot{\textsc{\thepage}}
 \cfoot{\textit{Last modified: \today}}
@@ -71,21 +51,15 @@
 
 \begin{document}
     \coverpage
+
     \tableofcontents
     \lstlistoflistings
     
-    Default template.
-    
     \newpage
 
-    \newif\ifdraft\drafttrue
-    \newif\ifdraft\draftfalse
+    \input{tex/01/abstaction}
+    \input{tex/01/conclusion}
 
-    \ifdraft
-        \include{abstaction}
-        \include{conclusion}
-    \else
-        \input{abstaction}
-        \input{conclusion}
-    \fi
+    \printbibliography
+
 \end{document}
